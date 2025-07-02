@@ -12,6 +12,10 @@ import { toast } from "@/components/ui/use-toast";
 import { useState } from "react";
 import { setCurrentUser } from "@/features/currentUserSlice";
 
+import GoogleLoginButton from "./GoogleLoginButton";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 const socialArray = [
   { icon: LinkedinIcon, href: "#" },
   { icon: FaTwitter, href: "#" },
@@ -23,7 +27,20 @@ const WebsiteLogin = () => {
   const [type, setType] = useState("password");
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  const handleGoogleSuccess = (data) => {
+    dispatch(setCurrentUser(data.user));
+    toast({
+      title: "Login successful",
+      description: `Welcome, ${data.user.first_name}`,
+    });
+    navigate("/");
+  };
+  const handleGoogleError = (error) => {
+    toast({ title: "Google Login Failed", description: error.message });
+  };
   return (
     <>
       <WbPageBanner />
@@ -134,6 +151,13 @@ const WebsiteLogin = () => {
                     </button>
                   );
                 })}
+              </div>
+              {/* Add Google Login Button here */}
+              <div className="flex justify-center mt-6">
+                <GoogleLoginButton
+                  onSuccess={handleGoogleSuccess}
+                  onError={handleGoogleError}
+                />
               </div>
               <div className="flex justify-center items-center">
                 <p className="text-sm font-normal tracking-wider mt-4 text-gray-700">

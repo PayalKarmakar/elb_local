@@ -22,6 +22,7 @@ import { loader as wbRegisterLoader } from "@/pages/website/WebsiteRegister";
 import { loader as userLayoutLoader } from "@/pages/website/user/UserLayout";
 import { loader as userPostListLoader } from "@/pages/website/user/post/UserPostList";
 import { loader as userPostEdit } from "@/pages/website/user/post/UserPostEdit";
+console.log(import.meta.env.VITE_BASE_URL);
 
 const router = createBrowserRouter([
   // Website unprotected routes start ------

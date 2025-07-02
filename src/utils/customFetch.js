@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const customFetch = axios.create({
-  baseURL: "/api",
+  baseURL: "/api", // <-- relative URL to trigger proxy
+  withCredentials: true, // if you use cookies/auth
 });
 
 //SERVER

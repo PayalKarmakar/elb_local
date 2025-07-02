@@ -12,12 +12,17 @@ export default defineConfig({
   },
   server: {
     proxy: {
+      // "/api": {
+      //   target: "http://localhost:3001/api",
+      //   //target: "https://elb-backend.onrender.com/api", ---SERVER
+      //   changeOrigin: true,
+      //   rewrite: (path) => path.replace(/^\/api/, ""),
+      //   timeout: 60000,
+      // },
       "/api": {
         target: "http://localhost:3001/api",
-        //target: "https://elb-backend.onrender.com/api", ---SERVER
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
-        timeout: 60000,
       },
     },
   },
