@@ -1,4 +1,5 @@
-import logoLight from "@/assets/website/img/logo/logo-white.svg";
+// import logoLight from "@/assets/website/img/logo/logo-white.svg";
+import logoLight from "@/assets/website/img/logo/logo-white.png";
 import logoDark from "@/assets/website/img/logo/logo-dark.png";
 import { WbTopSearch } from "@/components";
 import { AlignJustify, User } from "lucide-react";
@@ -37,12 +38,12 @@ const WbTopnav = () => {
               src={logo}
               alt={import.meta.env.VITE_APP_TITLE}
               style={{
-                height: "64px",
+                height: "90px",
                 width: "auto",
                 transition: "0.3s",
                 borderRadius: "8px",
               }}
-              className="h-16 "
+              // className="h-16 "
             />
           </Link>
           <WbTopSearch />
